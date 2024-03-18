@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: #d3cfdd;
+}
+
+.Container {
+    margin-left: 250px;
+}
+
+.Container h2 {
+    margin-left: 20px;
+    margin-top: 30px;
+    font-size: var(--h2);
+    color: var(--mainColor);
+    font-weight: bold;
+}
+
+:root {
+    --mainColor: #9a72f0;
+    --secondColor: #5c4098;
+    --h2: 25px;
+    --a: 20px;
+}
+
+.wrapper {
+    display: flex;
+    position: relative;
+}
+
+.wrapper .user {
+    margin-top: 5px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.wrapper .user:hover {
+    background: var(--mainColor);
+}
+
+.sideBar {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    background: var(--mainColor);
+    padding: 30px 0;
+}
+
+.sideBar h2 {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.sideBar img {
+    margin-top: 8px;
+    padding-left: 60px;
+}
+
+.sideBar a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    margin: 10px 0;
+    font-size: 17px;
+    padding: 5px;
+    transition: 0.2s ease-in-out;
+}
+.sideBar a:hover {
+    background-color: #5c4098;
+    border-radius: 30px;
+}
+
+/* |||||||||||||||||||||||||||||||FORM-LOGIN|||||||||||||||||||||||||||  */
+/* |||||||||||||||||||||||||||||||FORM-LOGIN|||||||||||||||||||||||||||  */
+/* |||||||||||||||||||||||||||||||FORM-LOGIN|||||||||||||||||||||||||||  */
+
+.formContainer {
+    width: 1000px;
+    border: 2px solid var(--secondColor);
+    border-radius: 30px !important;
+    height: 500px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.formContainer .right {
+    background: var(--mainColor);
+    color: white;
+    width: 100%;
+    display: block;
+    justify-content: center;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+.formContainer .right h2 {
+    font-size: var(--h2);
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.formContainer .right img {
+    padding-left: 135px;
+    margin-top: 20px;
+}
+
+.formContainer .left {
+    color: var(--mainColor);
+    width: 100%;
+    padding-left: 20px;
+}
+
+.formContainer .left h2 {
+    font-size: var(--h2);
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.formContainer .left label {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.formContainer .left input[type="text"],
+.formContainer .left input[type="password"] {
+    border: 1px solid var(--mainColor);
+    border-radius: 30px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 40px;
+}
+
+.formContainer .left input[type="submit"] {
+    background: var(--mainColor);
+    color: white !important;
+    border-radius: 30px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    padding: 5px;
+    transition: 0.2s ease-in-out;
+}
+.formContainer .left input[type="submit"]:hover {
+    background: var(--secondColor);
+    letter-spacing: 1px;
+}
+
+/* ||||||||||||||||||||||||| MEDIC FORM ||||||||||||  */
+/* ||||||||||||||||||||||||| MEDIC FORM ||||||||||||  */
+/* ||||||||||||||||||||||||| MEDIC FORM ||||||||||||  */
+
+.ajoutMedicForm {
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+.ajoutMedicForm label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.ajoutMedicForm input[type="text"],
+.ajoutMedicForm input[type="number"] {
+    border: 3px solid var(--mainColor);
+    border-radius: 30px;
+    margin-bottom: 5px;
+    width: 300px;
+    height: 40px;
+}
+
+.ajoutMedicForm input[type="submit"] {
+    background: var(--mainColor);
+    color: white !important;
+    border-radius: 30px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    padding: 5px;
+    transition: 0.2s ease-in-out;
+}
+.ajoutMedicForm input[type="submit"]:hover {
+    background: var(--secondColor);
+    letter-spacing: 1px;
+}
+
+/* ||||||||||||||||| SEARCH  */
+/* ||||||||||||||||| SEARCH  */
+/* ||||||||||||||||| SEARCH  */
+
+.searchBox {
+    margin-left: 20px;
+}
+
+.searchBox input[type="text"] {
+    border: 3px solid var(--mainColor);
+    border-radius: 30px;
+    margin-bottom: 5px;
+    width: 300px;
+    height: 40px;
+}
+
+.searchBox input[type="submit"] {
+    background: var(--mainColor);
+    color: white !important;
+    border-radius: 30px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    padding: 5px;
+    transition: 0.2s ease-in-out;
+}
+.searchBox input[type="submit"]:hover {
+    background: var(--secondColor);
+    letter-spacing: 1px;
+}
+
+/* ||||||||||||||||||||| TABLE |||||||||||||||||||||  */
+
+.tableContainer {
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+table thead th {
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: var(--secondColor) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+table tbody td {
+    background-color: var(--mainColor) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+
