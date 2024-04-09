@@ -20,14 +20,9 @@
 <body>
     <?php
         require_once '../includes/sideBar.php';
-    ?>
 
-        <!-- ---------------------STOCK------------------
-        ---------------------STOCK------------------
-        ---------------------STOCK------------------ -->
 
-            <?php
-                require_once '../db/connexion.php';
+            require_once '../db/connexion.php';
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                     $show = "SELECT * FROM medic WHERE id_medic = $id";
@@ -35,35 +30,55 @@
                     $row = mysqli_fetch_assoc($resultShow);
                 }
 
-                if (isset($_POST['ajoutStock'])) {
+                if (isset($_POST['vendre'])) {
                     $id = $_GET['idUpdateStock'];
                     $nomMedic = $_POST['nomMedic'];
                     $prix = $_POST['prix'];
+                    $stock = $_POST['stock'];
                     $quantite = $_POST['quantite'];
-                    $categirie = $_POST['categirie'];
+                    $date = $_POST['date'];
 
+
+                    // FAIRE LA VENTE DU MEDICAMENT
+
+                    if ($stock >= $quantite) {
+                        $total = $prix * $quantite;
+                        $reqVente = "INSERT INTO vente (date_vente, produit_vente, quantite_vente)
+                        VALUES ('$date', '$id', '$quantite')";
+                        $resultatVente = mysqli_query($connexion, $reqVente);
+                        if ($resultatVente) {
+                            header('location: voirVente.php');
+                        }
+                    } else {
+                        header('location: voirMedic.php');
+                    }
+
+
+
+                    
+                    // METTRE A JOUR LE STOCK
+                    $newStock = $stock - $quantite;
                     $update = "UPDATE medic SET
-                    quantite_medic = '$quantite'
+                    quantite_medic = '$newStock'
                     WHERE id_medic = $id
                 ";
 
                 $resultat = mysqli_query($connexion, $update);
                 if ($resultat) {
-                    header('location: voirMedic.php');
+                    header('location: voirVente.php');
                 }
             }
 
-            ?>
 
 
 
-
+    ?>
 
 
     <div class="Container">
-        <h2>Modifier le stock du médicament séléctionné</h2>
+        <h2>Vendre le médicament séléctionné</h2>
             <div class="ajoutMedicForm">
-                <form action="ajouterStock.php?idUpdateStock=<?php echo $id;?>" method="post">
+                <form action="vendreMedic.php?idUpdateStock=<?php echo $id;?>" method="post">
                     <div class="form-group">
                         <label for="nomMedic">Nom médicament</label>
                         <input type="text" class="form-control" name="nomMedic" value="<?php echo $row['nom_medic']?>" readonly>
@@ -73,10 +88,18 @@
                         <input readonly type="number" class="form-control" name="prix" value="<?php echo $row['prix_medic']?>">
                     </div>
                     <div class="form-group">
-                        <label for="quantite">Quantité</label>
-                        <input type="number" class="form-control" name="quantite" value="<?php echo $row['quantite_medic']?>">
+                        <label for="quantite">Stock actuel</label>
+                        <input readonly type="number" class="form-control" name="stock" value="<?php echo $row['quantite_medic']?>">
                     </div>
-                    <input type="submit" name="ajoutStock" class="btn btn-sm" value="Modifier quantité stock">
+                    <div class="form-group">
+                        <label for="quantite">Quantité à vendre</label>
+                        <input type="number" class="form-control" name="quantite">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date de vente</label>
+                        <input type="text" class="form-control" name="date" placeholder="AAAA-MM-JJ">
+                    </div>
+                    <input type="submit" name="vendre" class="btn btn-sm" value="Vendre">
                 </form>
             </div>  
     </div>

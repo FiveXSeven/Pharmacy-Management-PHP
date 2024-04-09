@@ -23,13 +23,12 @@
     ?>
     <div class="Container">
         <h2>Voir les médicaments</h2>
-        <div class="searchBox">
-            <input type="text" class="form-control" name="searchMedic" placeholder="Recherche par catégorie">
+        <form action="search.php" method="post" class="searchBox">
+            <input type="text" class="form-control" name="search" placeholder="Recherche par catégorie">
             <input type="submit" name="searchMedic" class="btn btn-sm" value="Rechercher">
-        </div>
+        </form>
 
 
-        <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
         <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
         <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
 
@@ -43,7 +42,7 @@
                         <th scope="col">Prix</th>
                         <th scope="col">Quantité</th>
                         <th scope="col">Catégorie</th>
-                        <th scope="col">Ajouter Stock</th>
+                        <th scope="col">Modifier Stock</th>
                         <th scope="col">Vendre</th>
                         <th scope="col">Retirer</th>
                     </tr>
@@ -59,11 +58,11 @@
                         <td> <?php echo $row['cat_medic'] ?> </td>
 
                         <td>
-                            <a class="btn btn-sm btn-secondary" href="ajouterStock.php?id=<?=$row['id_medic']?>">Ajouter</a>
+                            <a class="btn btn-sm btn-secondary" href="ajouterStock.php?id=<?=$row['id_medic']?>">Modifier</a>
                         </td>
 
                         <td>
-                        <a class="btn btn-sm btn-secondary" href="vendre.php?id=<?=$row['id_medic']?>">Vendre</a>
+                        <a class="btn btn-sm btn-secondary" href="vendreMedic.php?id=<?=$row['id_medic']?>">Vendre</a>
                         </td>
 
                         <td>

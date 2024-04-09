@@ -28,10 +28,10 @@ session_start();
             <img src="../img/user2.svg" alt="">
             <ul>
                 <li><a class="user" href="#"><?php echo $_SESSION['user']  ?></a></li>
-                <li><a href="">Voir Les Ventes</a></li>
+                <li><a href="../adminUser/voirVente.php">Voir Les Ventes</a></li>
                 <li><a href="../adminUser/voirMedic.php">Voir Les Médicaments</a></li>
                 <li><a href="../adminUser/ajouterMedic.php">Ajouter Médicaments</a></li>
-                <li><a href="">Vendre</a></li>
+                <li><a href="../adminUser/vendre.php">Vendre</a></li>
                 <li><a href="../db/logoutUser.php">Se Déconnecter</a></li>
             </ul>
         </div>

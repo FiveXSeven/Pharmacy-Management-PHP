@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (mysqli_num_rows($resultLogin) == 1) {
                     $_SESSION['user'] = $username;
                     $_SESSION['pwd'] = $userpwd;
-                    header('location: ../adminUser/ajouterMedic.php');
+                    header('location: ../adminUser/voirMedic.php');
                 } else {
                     echo $error[] = "nom d'utilisateur ou mot de passe inorrect";
                 }

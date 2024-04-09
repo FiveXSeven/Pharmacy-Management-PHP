@@ -20,15 +20,41 @@
 <body>
     <?php
         require_once '../includes/sideBar.php';
+        // require_once '../db/showMedic.php';
+
+
+        // RECUPERATION DE LA RECHERCHE
+        if (isset($_POST['searchMedic'])) {
+            $search = $_POST['searchMedic'];
+            
+        }
     ?>
     <div class="Container">
-        <h2>Choisir un médicament à vendre</h2>
+        <h2>Voir les médicaments</h2>
+        <form action="search.php" method="post" class="searchBox">
+            <input type="text" class="form-control" name="search" placeholder="Recherche par catégorie">
+            <input type="submit" name="searchMedic" class="btn btn-sm" value="Rechercher">
+        </form>
 
 
         <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
         <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
+        <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
 
-        <?php require_once '../db/showMedic.php'; ?>
+    <?php
+        require_once '../db/showMedic.php';
+        
+        // GESTION DE LA BARRE DE RECHERCHE
+        if (isset($_POST['searchMedic'])) {
+            $search = $_POST['search'];
+            // echo $search;
+
+            $reqSearch = "SELECT * FROM categori INNER JOIN medic ON categori.nom_cat = medic.cat_medic WHERE nom_medic LIKE'%$search%' OR cat_medic LIKE '%$search%'";
+
+            $resultSearch = mysqli_query($connexion, $reqSearch);
+        }
+
+    ?>
 
         <div class="tableContainer">
             <table class="table">
@@ -40,12 +66,15 @@
                         <th scope="col">Catégorie</th>
                         <th scope="col">Modifier Stock</th>
                         <th scope="col">Vendre</th>
+                        <th scope="col">Retirer</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <?php 
-                            while ($row = mysqli_fetch_assoc($result)) {   
+                            while ($row = mysqli_fetch_assoc($resultSearch)) {   
+                            
+                            
                         ?>
                         <td> <?php echo $row['nom_medic'] ?> </td>
                         <td> <?php echo $row['prix_medic'] ?> </td>
@@ -57,9 +86,12 @@
                         </td>
 
                         <td>
-                        <a class="btn btn-sm btn-secondary" href="vendreMedic.php?id=<?=$row['id_medic']?>">Vendre</a>
+                        <a class="btn btn-sm btn-secondary" href="vendre.php?id=<?=$row['id_medic']?>">Vendre</a>
                         </td>
 
+                        <td>
+                            <a class="btn btn-sm btn-secondary" href="retirer.php?id=<?=$row['id_medic']?>">Retirer</a>
+                        </td> -->
 
                     </tr>
                     <?php 

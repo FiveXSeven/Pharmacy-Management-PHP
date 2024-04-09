@@ -22,44 +22,45 @@
         require_once '../includes/sideBar.php';
     ?>
     <div class="Container">
-        <h2>Choisir un médicament à vendre</h2>
+        <h2>Liste des ventes</h2>
+
 
 
         <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
         <!-- |||||||||||||||||| AFFICHER LES DONNEES |||||||||||||  -->
 
-        <?php require_once '../db/showMedic.php'; ?>
+        <?php require_once '../db/showMedic.php'; 
+        require_once '../db/connexion.php';
+        $showVente = "SELECT * FROM vente INNER JOIN medic ON vente.produit_vente = medic.id_medic";
+        $result = mysqli_query($connexion, $showVente);
 
+    ?>
         <div class="tableContainer">
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Nom médicaments</th>
                         <th scope="col">Prix</th>
-                        <th scope="col">Quantité</th>
+                        <th scope="col">Quantité vendu</th>
                         <th scope="col">Catégorie</th>
-                        <th scope="col">Modifier Stock</th>
-                        <th scope="col">Vendre</th>
+                        <th scope="col">Date Vendu</th>
+                        <th scope="col">Retirer</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <?php 
+                        <?php
+
                             while ($row = mysqli_fetch_assoc($result)) {   
                         ?>
                         <td> <?php echo $row['nom_medic'] ?> </td>
                         <td> <?php echo $row['prix_medic'] ?> </td>
-                        <td> <?php echo $row['quantite_medic'] ?> </td>
+                        <td> <?php echo $row['quantite_vente'] ?> </td>
                         <td> <?php echo $row['cat_medic'] ?> </td>
-
+                        <td> <?php echo $row['date_vente'] ?> </td>
                         <td>
-                            <a class="btn btn-sm btn-secondary" href="ajouterStock.php?id=<?=$row['id_medic']?>">Modifier</a>
-                        </td>
-
-                        <td>
-                        <a class="btn btn-sm btn-secondary" href="vendreMedic.php?id=<?=$row['id_medic']?>">Vendre</a>
-                        </td>
-
+                            <a class="btn btn-sm btn-secondary" href="retirerVente.php?id=<?=$row['id_medic']?>">Retirer</a>
+                        </td> -->
 
                     </tr>
                     <?php 
