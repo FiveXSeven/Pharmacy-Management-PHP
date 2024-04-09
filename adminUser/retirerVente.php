@@ -7,7 +7,7 @@ if (
     $id = $_GET['id'];
 
     $resultdel = mysqli_query($connexion,
-    "DELETE * FROM vente WHERE id_vente = $id");
+    "DELETE FROM vente WHERE id_vente = $id");
     if ($resultdel) {
         header("location: voirVente.php");
         

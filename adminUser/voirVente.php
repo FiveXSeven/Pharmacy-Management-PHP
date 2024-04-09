@@ -59,7 +59,7 @@
                         <td> <?php echo $row['cat_medic'] ?> </td>
                         <td> <?php echo $row['date_vente'] ?> </td>
                         <td>
-                            <a class="btn btn-sm btn-secondary" href="retirerVente.php?id=<?=$row['id_medic']?>">Retirer</a>
+                            <a class="btn btn-sm btn-secondary" href="retirerVente.php?id=<?=$row['id_vente']?>">Retirer</a>
                         </td> -->
 
                     </tr>
